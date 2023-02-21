@@ -19,7 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin/dashboard', DashboardController::class)->name('admin.dashboard');
+Route::group(['middleware' => 'auth'], function(){
 
-Route::get('admin/users', ListUsers::class)->name('admin.users');
+    Route::get('admin/dashboard', DashboardController::class)->name('admin.dashboard');
+    Route::get('admin/users', ListUsers::class)->name('admin.users');
 
+});

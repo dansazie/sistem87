@@ -13,7 +13,7 @@
           <img src="{{ asset ('backend/dist') }}/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">{{auth()->user()->username}}</a>
         </div>
       </div>
 
@@ -92,14 +92,17 @@
               </li>
             </ul>
           </li>
+
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <form method="POST" action="{{route('logout')}}">
+              @csrf
+            <a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
+                Logout                
               </p>
             </a>
+            </form>
           </li>
         </ul>
       </nav>
