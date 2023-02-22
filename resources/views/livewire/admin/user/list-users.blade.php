@@ -53,7 +53,7 @@
                                 <tr>
                                     <th scope="row">{{$user->username}}</th>
                                     <td>{{$user->email}}</td>
-                                    <td>grup</td>
+                                    <td>{{$user->usergroup}}</td>
                                     <td>
                                         <a href="" wire:click.prevent="editPengguna({{$user->id}})"> <i class="fa fa-edit mr-2"></i></a>
                                         <a href="" wire:click.prevent="konfirmasiHapus({{$user->id}})"> <i class="fa fa-trash text-danger"></i></a>                                    
@@ -62,6 +62,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end">
+                        {{ $users->links() }}
                     </div>
                 </div>  
             </div>          
@@ -106,15 +109,16 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="group" class="col-form-label">Tipe Pengguna:</label>
-                            <select class="form-control @error('group') is-invalid @enderror" id="group" wire:model.defer="state.group">
-                                <option>admin</option>
-                                <option>Asatidz</option>
-                                <option>Santri</option>
-                                <option>Kepala</option>
-                                <option>Staf</option>
+                            <label for="usergroup" class="col-form-label">Tipe Pengguna:</label>
+                            <select class="form-control @error('usergroup') is-invalid @enderror" id="usergroup" wire:model.defer="state.usergroup">
+                                <option >Pilih Grup</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Asatidz">Asatidz</option>
+                                <option value="Santri">Santri</option>
+                                <option value="Kepala">Kepala</option>
+                                <option value="Staf">Staf</option>
                             </select>
-                            @error('group')
+                            @error('usergroup')
                             <div class="invalid-feedback">
                                 {{$message}}
                             </div>

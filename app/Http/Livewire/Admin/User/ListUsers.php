@@ -5,9 +5,12 @@ namespace App\Http\Livewire\Admin\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use Livewire\withPagination;
 
 class ListUsers extends Component
 {
+    use withPagination;
+    protected $paginationTheme ='bootstrap';
     public $state=[]; 
     public $user;
     public $deletedId;
@@ -27,7 +30,7 @@ class ListUsers extends Component
             'username' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed',
-            //'group' => 'required',
+            'usergroup' => 'required',
         ])->validate();
 
         $validateData['password'] = bcrypt($validateData['password']);
@@ -51,6 +54,7 @@ class ListUsers extends Component
             'id' => $this->user->id,
             'username' => $this->user->username,
             'email' => $this->user->email,
+            'usergroup' => $this->user->usergroup,
         ];
         //dd($this->state);
         $this->dispatchBrowserEvent('tambah-pengguna');
@@ -62,7 +66,7 @@ class ListUsers extends Component
             'username' => 'required',
             'email' => 'required|email|unique:users,email,'.$this->user->id,
             'password' => 'sometimes|confirmed',
-            //'group' => 'required',
+            'usergroup' => 'required',
         ])->validate();
         
         if(!empty($validateData['password'])){
@@ -96,7 +100,7 @@ class ListUsers extends Component
     
     public function render()
     {
-        $users=User::latest()->paginate();
+        $users=User::latest()->paginate(5);
 
         return view('livewire.admin.user.list-users', ['users'=>$users]);
     }
