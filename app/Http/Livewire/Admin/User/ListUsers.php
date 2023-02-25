@@ -2,15 +2,12 @@
 
 namespace App\Http\Livewire\Admin\User;
 
-use Livewire\Component;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Livewire\Admin\AdminComponent;
 use App\Models\User;
-use Livewire\withPagination;
 
-class ListUsers extends Component
+class ListUsers extends AdminComponent
 {
-    use withPagination;
-    protected $paginationTheme ='bootstrap';
+    
     public $state=[]; 
     public $user;
     public $deletedId;

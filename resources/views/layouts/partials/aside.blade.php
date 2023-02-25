@@ -44,19 +44,19 @@
             </a>
           </li>
           
-          <li class="nav-item {{ request()->is('admin/users') ? 'menu-open' : '' }}">
-            <a href="#" class="nav-link {{ request()->is('admin/users') ? 'active' : '' }}">
+          <li class="nav-item {{ request()->is('admin/santri') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ request()->is('admin/santri') ? 'active' : '' }}">
               <i class="nav-icon fas fa-tools"></i>
               <p>
                 Master Data
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview {{ request()->is('admin/users') ? 'active' : '' }}" >
+            <ul class="nav nav-treeview {{ request()->is('admin/santri') ? 'active' : '' }}" >
               <li class="nav-item">
-                <a href="{{ route('admin.users') }}" class="nav-link {{ request()->is('admin/users') ? 'active' : '' }}">
+                <a href="{{ route('admin.santri') }}" class="nav-link {{ request()->is('admin/santri') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Pengguna</p>
+                  <p>Santri</p>
                 </a>
               </li>
               <li class="nav-item">

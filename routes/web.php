@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Admin\User\ListUsers;
+use App\Http\Livewire\Admin\Master\ListSantri;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,6 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('admin/dashboard', DashboardController::class)->name('admin.dashboard');
     Route::get('admin/users', ListUsers::class)->name('admin.users');
+    Route::get('admin/santri', ListSantri::class)->name('admin.santri');
 
 });
